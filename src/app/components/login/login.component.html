@@ -1,0 +1,12 @@
+<div>
+  <h3>Login</h3>
+  <form #loginForm="ngForm" (bgSubmit)="login()">
+    <label for="email">Your E-mail </label>
+    <input type="text" name="email" id="email" required [(ngModel)]="model.email">
+    <br>
+    <label for="password">Your Password </label>
+    <input type="password" name="password" id="password" required [(ngModel)]="model.password" >
+    <button type="button" (click)="login(); loginForm.reset()" [disabled]="!loginForm.form.valid">Login</button>
+  </form>
+  <div [hidden]="hiddenError" class="alert alert-danger">Erro</div>
+</div>
