@@ -1,17 +1,9 @@
-# Ginger Project
+# Ginger Frontend Project
 
-A control version of Term paper and Undergraduate thesis project.
+A frontend part of a Term paper and Undergraduate thesis control version project .
 
 ### Technologies:
-
-###### Frontend
 
 - Angular
 - Angular Material
 - TypeScript Lang.
-
-###### Backend
-
-- Java
-- Spring Boot
-- Lombok
