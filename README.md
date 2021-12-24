@@ -1,14 +1,17 @@
 # Ginger Project
 
-## Structure Folder
+A control version of Term paper and Undergraduate thesis project.
 
-- src
+### Technologies:
 
-  - app
-    - components
-    - pages
-    - services
-    - shared
+###### Frontend
 
-  - assets
-  - environments
+- Angular
+- Angular Material
+- TypeScript Lang.
+
+###### Backend
+
+- Java
+- Spring Boot
+- Lombok
