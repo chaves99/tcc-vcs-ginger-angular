@@ -1,0 +1,23 @@
+<div>
+    <h2 class="title-center">Projects</h2>
+    <div class="content-justify-center">
+        <mat-grid-list cols="2" rowHeight="3:1" class="" style="width: 80em;" *ngIf="hasProject(); else newProject">
+            <mat-grid-tile *ngFor="let project of projects">
+                <mat-card>
+                    <mat-card-title>{{ project.name }}</mat-card-title>
+                    <mat-card-subtitle>{{ formatProjectsTags(project.tags)  }}</mat-card-subtitle>
+                    <mat-card-actions>
+                        <button mat-button>LIKE</button>
+                        <button mat-button>SHARE</button>
+                    </mat-card-actions>
+                </mat-card>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+</div>
+
+<ng-template #newProject>
+
+    <button mat-raised-button (click)="openDialogNewProject()">Create New Project</button>
+
+</ng-template>

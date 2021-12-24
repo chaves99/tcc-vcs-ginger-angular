@@ -1,0 +1,33 @@
+<div class="">
+    <h2 class="title-center">Login</h2>
+    <form #loginForm="ngForm" (bgSubmit)="login()" class="form-style-width content-justify-center">
+        <table cellspacing="0">
+            <tr>
+                <td>
+                    <mat-form-field appearance="fill" class="input-full-width">
+                        <mat-label>Username/Email</mat-label>
+                        <input matInput type="text" name="username" id="username" [(ngModel)]="model.username">
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field appearance="fill" class="input-full-width">
+                        <mat-label>Password</mat-label>
+                        <input matInput type="password" name="password" id="password" [(ngModel)]="model.password"
+                            (keyup.enter)="login(); loginForm.reset()">
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div *ngIf="!hiddenError">
+                        <p>{{ errorMessage }}</p>
+                    </div>
+                    <button mat-raised-button type="button" (click)="login(); loginForm.reset()"
+                        [disabled]="!loginForm.form.valid">Login</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
