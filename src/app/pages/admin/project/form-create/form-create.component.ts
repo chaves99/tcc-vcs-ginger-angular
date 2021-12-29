@@ -1,6 +1,8 @@
-import { Component } from "@angular/core";
-import { MatDialogRef } from "@angular/material/dialog";
+import { Component, Inject } from "@angular/core";
+import { FormControl } from "@angular/forms";
+import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { LoginService } from "src/app/services/login/login.service";
+import { CreateProjectDto } from "src/app/services/project/project.service";
 
 @Component({
     selector: 'admin-project-form-create',
@@ -13,14 +15,34 @@ export class ProjectFormCreateComponent {
         tags?: number[]
     } = {};
 
+    tagFormControl = new FormControl();
+
+    tagList: {
+        id?: number;
+        desc?: string;
+    }[] = [{
+        id: 1,
+        desc: 'tag teste 1'
+    },
+    {
+        id: 2,
+        desc: 'tag teste 2'
+    },
+    {
+        id: 3,
+        desc: 'tag teste 3'
+    }];
+
     constructor(
         public logiService: LoginService,
         public dialogRef: MatDialogRef<ProjectFormCreateComponent>,
-        // @Inject(MAT_DIALOG_DATA) public data: DialogD
+        @Inject(MAT_DIALOG_DATA) public data: CreateProjectDto
     ) { }
 
     onClose(): void {
-        this.dialogRef.close();
+        console.log('onClose');
+        console.log(this.tagFormControl.value);
+        // this.dialogRef.close();
     }
 
 }

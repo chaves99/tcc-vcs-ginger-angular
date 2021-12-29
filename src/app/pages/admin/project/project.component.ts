@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { LoginService } from "src/app/services/login/login.service";
-import { Project, ProjectService, ProjectTags } from "../../../services/project/project.service";
+import { Project, ProjectService, ProjectTags } from "src/app/services/project/project.service";
 import { ProjectFormCreateComponent } from "./form-create/form-create.component";
 
 @Component({

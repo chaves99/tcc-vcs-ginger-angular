@@ -1,27 +1,28 @@
-<h3>New Project</h3>
-<form #projectForm="ngForm" (bgSubmit)="onClose()">
-    <table cellspacing="0" >
+<h3 class="title-center">New Project</h3>
+<form (bgSubmit)="onClose()" style="width: 100%;" class="form-style-width content-justify-center">
+    <table cellspacing="0" style="width: 100%;">
         <tr>
             <td>
-                <mat-form-field appearance="outline">
-                    <mat-label>Project Name</mat-label >
-                    <input matInput name="projectName" type="text" [(ngModel)]="projectTemplate.name">
+                <mat-form-field appearance="fill" style="width: 100%;">
+                    <mat-label>Project Name</mat-label>
+                    <input matInput name="projectName" type="text">
                 </mat-form-field>
             </td>
         </tr>
         <tr>
             <td>
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="fill">
                     <mat-label>Project Tags</mat-label>
-                    <input matInput name="projectTags" type="text" [(ngModel)]="projectTemplate.tags">
+                    <mat-select [formControl]=tagFormControl multiple>
+                        <mat-option *ngFor="let tag of tagList" [value]="tag.id">{{ tag.desc }}</mat-option>
+                    </mat-select>
+
                 </mat-form-field>
             </td>
         </tr>
         <tr>
             <td>
-                <mat-form-field>
-                    <button mat-raised-button type="button" click="onClose()">Create</button>
-                </mat-form-field>
+                <button mat-raised-button type="button" (click)="onClose()">Create</button>
             </td>
         </tr>
     </table>
