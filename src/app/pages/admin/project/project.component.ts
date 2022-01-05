@@ -40,12 +40,16 @@ export class ProjectComponent implements OnInit {
         }
     }
 
-    openDialogNewProject(){
+    openDialogNewProject() {
         this.dialog.open(ProjectFormCreateComponent, {
-            width: '500px'
+            width: '500px',
+            data: {}
         })
-        .afterClosed();
-
+            .afterClosed()
+            .subscribe(result => {
+                console.log('Dialog is closed');
+                console.log(result);
+            });
     }
 
 }
