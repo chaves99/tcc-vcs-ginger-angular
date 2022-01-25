@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { LoginService } from "src/app/services/login/login.service";
-import { Project, ProjectService, ProjectTags } from "src/app/services/project/project.service";
+import { Project, ProjectService, CreateProjectDto } from "src/app/services/project/project.service";
+import { Tags } from "src/app/services/tags/tags.service";
 import { ProjectFormCreateComponent } from "./form-create/form-create.component";
 
 @Component({
@@ -19,36 +20,45 @@ export class ProjectComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-
+        let idUser = this.loginService.getLoggedUser()?.id;
+        if (idUser !== undefined) {
+            this.projectService.getProjectsByUser(idUser)
+                .subscribe(p => {
+                    console.log(p);
+                    this.projects = p;
+                });
+        }
     }
 
     hasProject(): boolean {
         return this.projects.length > 0;
     }
 
-    public formatProjectsTags(tags: ProjectTags[]): string {
+    public formatProjectsTags(tags: Tags[]): string {
         if (tags.length > 3) {
             return `${tags[0].description}, ${tags[1].description}, ${tags[2].description}, ...`;
         } else if (tags.length == 0) {
             return `No tags`;
         } else {
-            let desc: string = "";
+            let description: string = "";
             tags.forEach((tag, index) => {
-                desc.concat(tag.description);
+                description.concat(tag.description || '');
             });
-            return desc;
+            return description;
         }
     }
 
     openDialogNewProject() {
-        this.dialog.open(ProjectFormCreateComponent, {
+        this.dialog.open<ProjectFormCreateComponent, any, CreateProjectDto>(ProjectFormCreateComponent, {
             width: '500px',
             data: {}
         })
             .afterClosed()
             .subscribe(result => {
-                console.log('Dialog is closed');
-                console.log(result);
+                if (result !== undefined) {
+                    result.userId = this.loginService.getLoggedUser()?.id;
+                    this.projectService.createProject(result).subscribe();
+                }
             });
     }
 

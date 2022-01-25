@@ -13,8 +13,8 @@
             <td>
                 <mat-form-field appearance="fill" style="width: 100%;">
                     <mat-label>Project Tags</mat-label>
-                    <mat-select multiple name="tagsIds" [(ngModel)]="data.tagIds">
-                        <mat-option *ngFor="let tag of tagList" [value]="tag.id" >{{ tag.desc }}</mat-option>
+                    <mat-select multiple [sortComparator]="comparatorTags" name="tagsIds" [(ngModel)]="data.tagIds">
+                        <mat-option *ngFor="let tag of tagList" [value]="tag.id" >{{ tag.description }}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </td>

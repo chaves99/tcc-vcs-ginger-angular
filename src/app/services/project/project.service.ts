@@ -3,13 +3,14 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { GlobalVariable } from "src/app/model/global";
 import { UserRegisterReceived } from "src/app/model/user-register";
+import { Tags } from "../tags/tags.service";
 
 @Injectable({
     providedIn: "root"
 })
 export class ProjectService {
 
-    urlProject: string = GlobalVariable.BASE_API_URL + 'project';
+    urlProject: string = GlobalVariable.BASE_API_URL + '/project';
 
     constructor(
         private httpClient: HttpClient
@@ -28,7 +29,7 @@ export class ProjectService {
 export interface Project {
     id: number;
     name: String;
-    tags: ProjectTags[];
+    tags: Tags[];
     comments: Comment[];
 
 }
@@ -37,10 +38,6 @@ export interface Comment {
     content: string;
     project: Project;
     user: UserRegisterReceived;
-}
-
-export interface ProjectTags {
-    description: string;
 }
 
 export interface CreateProjectDto {

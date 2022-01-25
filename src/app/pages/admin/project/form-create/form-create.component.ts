@@ -1,23 +1,33 @@
-import { Component, Inject } from "@angular/core";
-import { FormControl } from "@angular/forms";
+import { Component, Inject, OnInit } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
-import { LoginService } from "src/app/services/login/login.service";
 import { CreateProjectDto } from "src/app/services/project/project.service";
+import { Tags, TagsService } from "src/app/services/tags/tags.service";
 
 @Component({
     selector: 'admin-project-form-create',
     templateUrl: 'form-create.component.html'
 })
-export class ProjectFormCreateComponent {
+export class ProjectFormCreateComponent implements OnInit {
 
-    tagList: {
-        id?: number;
-        desc?: string;
-    }[] = [];
+    tagList: Tags[] = [];
 
     constructor(
         public dialogRef: MatDialogRef<ProjectFormCreateComponent>,
-        @Inject(MAT_DIALOG_DATA) public data: CreateProjectDto
-    ) { }
+        @Inject(MAT_DIALOG_DATA) public data: CreateProjectDto,
+        private tagsService: TagsService
+    ) {
+        this.tagsService.getAll().subscribe(data => this.tagList = data)
+    }
+
+
+    ngOnInit(): void {
+        this.tagsService.getAll().subscribe(data => this.tagList = data);
+    }
+
+    comparatorTags(anyOne: any, anyTwo: any): number {
+        console.log(anyOne);
+        console.log(anyTwo);
+        return 1;
+    }
 
 }
