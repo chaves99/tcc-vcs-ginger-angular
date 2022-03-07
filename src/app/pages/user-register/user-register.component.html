@@ -1,41 +1,53 @@
 <div>
-    <h3>User Register</h3>
-    <form #registerForm="ngForm" (bgSubmit)="register()">
-        <!-- <input type="text" name="name" id="name" placeholder="Name" [(ngModel)]="model.name">
-        <br />
-        <input type="text" name="username" id="username" placeholder="Username" [(ngModel)]="model.username">
-        <br />
-        <input type="text" name="email" id="email" placeholder="E-mail" [(ngModel)]="model.email">
-        <br />
-        <input type="password" name="password" id="password" placeholder="Password" [(ngModel)]="model.password">
-        <br />
-        <input type="password" name="confirm-password" id="confirm-password" placeholder="Confirm Password">
-        <br /> -->
-        <mat-form-field>
-            <mat-label>Name</mat-label>
-            <input matInput type="text" name="name" id="name" placeholder="Name" [(ngModel)]="model.name">
-        </mat-form-field>
+    <h2 class="title-center">User Register</h2>
+    <br>
+    <form #registerForm="ngForm" (bgSubmit)="register()" class="form-style-width content-justify-center">
+        <table cellspacing="0" >
+            <tr>
+                <td style="width: 50%;">
+                    <mat-form-field >
+                        <mat-label>Name</mat-label>
+                        <input matInput type="text" name="name" id="name" placeholder="Name" [(ngModel)]="model.name">
+                    </mat-form-field>
+                </td>
+                <td style="width: 50%;">
+                    <mat-form-field >
+                        <mat-label>Username</mat-label>
+                        <input matInput type="text" name="username" id="username" placeholder="Username" [(ngModel)]="model.username">
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="width: 100%;">
+                    <mat-form-field style="width: 100%;">
+                        <mat-label>E-mail</mat-label>
+                        <input matInput type="text" name="email" id="email" placeholder="E-mail" [(ngModel)]="model.email">
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="width: 100%;">
+                    <mat-form-field style="width: 100%;">
+                        <mat-label>password</mat-label>
+                        <input matInput type="password" name="password" id="password" placeholder="Password" [(ngModel)]="model.password">
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="width: 100%;">
+                    <mat-form-field style="width: 100%;">
+                        <mat-label>Confirm Password</mat-label>
+                        <input matInput type="password" name="confirm-password" id="confirm-password" placeholder="Confirm Password">
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button mat-raised-button type="button" (click)="register()">Register</button>
+                </td>
+            </tr>
+        </table>
 
-        <mat-form-field>
-            <mat-label>Username</mat-label>
-            <input matInput type="text" name="username" id="username" placeholder="Username" [(ngModel)]="model.username">
-        </mat-form-field>
-
-        <mat-form-field>
-            <mat-label>E-mail</mat-label>
-            <input matInput type="text" name="email" id="email" placeholder="E-mail" [(ngModel)]="model.email">
-        </mat-form-field>
-
-        <mat-form-field>
-            <mat-label>password</mat-label>
-            <input matInput type="password" name="password" id="password" placeholder="Password" [(ngModel)]="model.password">
-        </mat-form-field>
-
-        <mat-form-field>
-            <mat-label>Confirm Password</mat-label>
-            <input matInput type="password" name="confirm-password" id="confirm-password" placeholder="Confirm Password">
-        </mat-form-field>
-
-        <button mat-raised-button type="button" (click)="register()">Register</button>
+        
     </form>
 </div>
