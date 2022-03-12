@@ -24,10 +24,4 @@ export class ProjectFormCreateComponent implements OnInit {
         this.tagsService.getAll().subscribe(data => this.tagList = data);
     }
 
-    comparatorTags(anyOne: any, anyTwo: any): number {
-        console.log(anyOne);
-        console.log(anyTwo);
-        return 1;
-    }
-
 }

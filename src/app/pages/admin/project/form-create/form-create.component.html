@@ -12,8 +12,16 @@
         <tr>
             <td>
                 <mat-form-field appearance="fill" style="width: 100%;">
+                    <mat-label>Project Description</mat-label>
+                    <textarea matInput name="projectDescription" type="text" [(ngModel)]="data.description"></textarea>
+                </mat-form-field>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <mat-form-field appearance="fill" style="width: 100%;">
                     <mat-label>Project Tags</mat-label>
-                    <mat-select multiple [sortComparator]="comparatorTags" name="tagsIds" [(ngModel)]="data.tagIds">
+                    <mat-select multiple name="tagsIds" [(ngModel)]="data.tagIds">
                         <mat-option *ngFor="let tag of tagList" [value]="tag.id" >{{ tag.description }}</mat-option>
                     </mat-select>
                 </mat-form-field>

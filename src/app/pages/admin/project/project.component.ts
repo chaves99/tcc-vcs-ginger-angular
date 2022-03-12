@@ -1,5 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
+import { MatTable } from "@angular/material/table";
 import { LoginService } from "src/app/services/login/login.service";
 import { Project, ProjectService, CreateProjectDto } from "src/app/services/project/project.service";
 import { Tags } from "src/app/services/tags/tags.service";
@@ -7,11 +8,16 @@ import { ProjectFormCreateComponent } from "./form-create/form-create.component"
 
 @Component({
     selector: 'admin-project-component',
-    templateUrl: 'project.component.html'
+    templateUrl: 'project.component.html',
+    styleUrls: ['project.component.css']
 })
 export class ProjectComponent implements OnInit {
 
+    displayedColumns: string[] = ['name', 'description', 'createdDate', 'lastModifiedDate'];
+
     projects: Project[] = [];
+
+    @ViewChild(MatTable) table!: MatTable<Project>
 
     constructor(
         private loginService: LoginService,
@@ -57,7 +63,11 @@ export class ProjectComponent implements OnInit {
             .subscribe(result => {
                 if (result !== undefined) {
                     result.userId = this.loginService.getLoggedUser()?.id;
-                    this.projectService.createProject(result).subscribe();
+                    this.projectService.createProject(result)
+                        .subscribe(p => {
+                            this.projects.push(p);
+                            this.table.renderRows();
+                        });
                 }
             });
     }

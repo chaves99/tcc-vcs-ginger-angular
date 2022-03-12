@@ -28,10 +28,12 @@ export class ProjectService {
 
 export interface Project {
     id: number;
-    name: String;
+    name: string;
+    description: string
     tags: Tags[];
     comments: Comment[];
-
+    createdDate: Date;
+    lastModifiedDate: Date;
 }
 
 export interface Comment {
@@ -43,5 +45,6 @@ export interface Comment {
 export interface CreateProjectDto {
     userId: number | undefined;
     name: string;
+    description: string
     tagIds: number[];
 }
