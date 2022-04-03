@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { MatTable } from "@angular/material/table";
+import { Router } from "@angular/router";
+import { RoutePathKey } from "src/app/model/route-path-key";
 import { LoginService } from "src/app/services/login/login.service";
 import { Project, ProjectService, CreateProjectDto } from "src/app/services/project/project.service";
 import { Tags } from "src/app/services/tags/tags.service";
@@ -17,12 +19,13 @@ export class ProjectComponent implements OnInit {
 
     projects: Project[] = [];
 
-    @ViewChild(MatTable) table!: MatTable<Project>
+    @ViewChild(MatTable) table!: MatTable<Project>;
 
     constructor(
         private loginService: LoginService,
         private projectService: ProjectService,
-        private dialog: MatDialog
+        private dialog: MatDialog,
+        private router: Router
     ) { }
 
     ngOnInit(): void {
@@ -70,6 +73,11 @@ export class ProjectComponent implements OnInit {
                         });
                 }
             });
+    }
+
+    onClickLineTable(project: Project): void {
+        let url = `${RoutePathKey.PATH_ADMIN}/${RoutePathKey.PATH_ADMIN_PROJECT}`;
+        this.router.navigate([url, project.id ]);
     }
 
 }

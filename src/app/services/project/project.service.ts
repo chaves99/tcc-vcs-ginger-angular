@@ -17,11 +17,15 @@ export class ProjectService {
     ) { }
 
     public getProjectsByUser(userId: number): Observable<Project[]> {
-        return this.httpClient.get<Project[]>(`${this.urlProject}/${userId}`);
+        return this.httpClient.get<Project[]>(`${this.urlProject}/user/${userId}`);
     }
 
     public createProject(project: CreateProjectDto): Observable<Project> {
         return this.httpClient.post<Project>(`${this.urlProject}/create`, project);
+    }
+
+    public getById(id: number): Observable<Project> {
+        return this.httpClient.get<Project>(`${this.urlProject}/${id}`);
     }
 
 }
@@ -29,9 +33,11 @@ export class ProjectService {
 export interface Project {
     id: number;
     name: string;
-    description: string
-    tags: Tags[];
-    comments: Comment[];
+    description: string;
+    user?: UserRegisterReceived;
+    orientador?: UserRegisterReceived;
+    tags?: Tags[];
+    comments?: Comment[];
     createdDate: Date;
     lastModifiedDate: Date;
 }

@@ -1,8 +1,10 @@
 export interface UserRegisterSend {
     name: string;
+    lastName: string;
     username: string;
     email: string;
     password: string;
+    userType?: UserType;
 }
 
 export interface UserRegisterReceived {

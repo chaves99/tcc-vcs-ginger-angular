@@ -5,6 +5,7 @@ import { AdminRoutingModule } from "./admin-routing.module";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { ProfileComponent } from "./profile/profile.component";
 import { ProjectFormCreateComponent } from "./project/form-create/form-create.component";
+import { ProjectDetailComponent } from "./project/project-detail/project-detail.component";
 import { ProjectComponent } from "./project/project.component";
 
 @NgModule({
@@ -12,7 +13,8 @@ import { ProjectComponent } from "./project/project.component";
         DashboardComponent,
         ProfileComponent,
         ProjectComponent,
-        ProjectFormCreateComponent
+        ProjectFormCreateComponent,
+        ProjectDetailComponent
     ],
     providers: [],
     imports: [

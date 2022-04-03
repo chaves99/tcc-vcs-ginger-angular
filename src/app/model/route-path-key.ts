@@ -7,5 +7,6 @@ export enum RoutePathKey {
     // admin
     PATH_ADMIN = "admin",
     PATH_ADMIN_PROFILE = "profile",
-    PATH_ADMIN_PROJECT = "project"
+    PATH_ADMIN_PROJECT = "project",
+    PATH_ADMIN_PROJECT_DETAIL = "project/detail",
 }

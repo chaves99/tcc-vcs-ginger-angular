@@ -22,11 +22,8 @@ export class AuthGuard implements CanActivate {
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
         let cookie: string = this.cookieService.get(GlobalVariable.GINGER_COOKIE_KEY);
-        console.log("canActivate - cookie: " + cookie);
         if (cookie != null && cookie.length > 0) {
             let obj: UserRegisterReceived = JSON.parse(cookie);
-            console.log("canActivate - state:" + state.toString());
-            console.log("canActivate - user:" + obj.username);
             if (obj != null) {
                 return true;
             }
